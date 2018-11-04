@@ -1,0 +1,36 @@
+databaseChangeLog:
+- changeSet:
+    id: create hibernate_sequence
+    author: thiagoematos
+    changes:
+    - createSequence:
+        sequenceName: hibernate_sequence
+- changeSet:
+    id: Tabela para armazenar os eventos vindos dos Webhooks
+    author: thiagoematos
+    changes:
+    - createTable:
+        tableName: event
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: events_pkey
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: action
+            type: VARCHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: number
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: created_at
+            type: DATE
